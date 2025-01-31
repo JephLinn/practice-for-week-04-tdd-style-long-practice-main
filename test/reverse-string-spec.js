@@ -32,9 +32,9 @@ describe("Word", function () {
 
             const test3 = reverseString(obj);
 
-            expect(test1).to.throw(TypeError);
-            expect(test2).to.throw(TypeError);
-            expect(test3).to.throw(TypeError);
+            expect(() => test1.to.throw(TypeError));
+            expect(() => test2.to.throw(TypeError));
+            expect(() => test3.to.throw(TypeError));
         })
     })
   });
