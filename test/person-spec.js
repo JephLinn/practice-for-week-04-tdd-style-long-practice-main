@@ -5,6 +5,7 @@ const Person = require("../problems/person");
 
 describe("Person", () => {
     let abby;
+    let gail;
 
     beforeEach (() => {
         abby = new Person("Abby", 26);
@@ -37,6 +38,27 @@ describe("Person", () => {
     describe("switchVisit function", () => {
         it("should invoke visit() func from person2, use this person as arg", () => {
             expect(abby.switchVisit(gail)).to.equal("Gail visits Abby.");
-        })
-    })
+        });
+    });
+
+    describe("update function", () => {
+        context("if arg isn't an object", () => {
+            it("should throw typeError", () => {
+                expect(() => abby.update("test").to.throw(TypeError))
+            });
+        });
+        context("if obj doesn't have correct keys", () => {
+            it("should throw typeError", () => {
+                expect(() => abby.update({job: clerk}).to.throw(TypeError))
+            });
+        });
+        context("if arg has correct keys", () => {
+            it("should update properties", () =>{
+                let coolPerson = new Person("mai", 32); 
+                let test1 = coolPerson.update({ name: "lulu", age: 57 });
+
+                expect(test1).to.deep.equal({name: "lulu", age: 57});
+            });
+        });
+    });
 })
