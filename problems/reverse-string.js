@@ -1,6 +1,6 @@
 module.exports = function reverseString(string) {
   // if (typeof string !== "String") {
-  //   throw new Error("TypeError: Not a String")
+  //   throw TypeError("TypeError: Not a String")
   // }
   
   let reversed = ""

@@ -20,21 +20,9 @@ describe("Word", function () {
 
     describe("Throw TypeError", function () {
         it("should throw a typeError if not a string", function() {
-            let arr = [];
-
-            let num = 4;
-
-            let obj = {};
-
-            const test1 = reverseString(arr);
-
-            const test2 = reverseString(num);
-
-            const test3 = reverseString(obj);
-
-            expect(() => test1.to.throw(TypeError));
-            expect(() => test2.to.throw(TypeError));
-            expect(() => test3.to.throw(TypeError));
+            expect(() => reverseString([]).to.throw(TypeError));
+            expect(() => reverseString(4).to.throw(TypeError));
+            expect(() => reverseString({}).to.throw(TypeError));
         })
     })
   });
