@@ -26,6 +26,29 @@ class Person {
       throw TypeError("Provide obj with 'name' and 'age' properties.")
     }
   }
+
+  tryUpdate(obj) {
+  try  {
+    this.update(obj);
+    return true;
+  } catch (error) {
+    return false;
+  }
+  }
+
+  static greetAll(arr) {
+    if (Array.isArray(arr)) {
+      let newArr = [];
+
+      arr.forEach((person) => {
+        newArr.push(person.sayHello())
+      });
+      return newArr
+    }
+    else {
+      throw TypeError ("Must provide an array.")
+    }
+  }
 }
 
 module.exports = Person;

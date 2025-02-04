@@ -61,4 +61,35 @@ describe("Person", () => {
             });
         });
     });
-})
+
+    describe("tryUpdate function", () => {
+        context("if invoked successfully", () => {
+            it("should return true and use update() function", () => {
+                let coolPerson = new Person("mai", 32); 
+                let test1 = coolPerson.tryUpdate({ name: "lulu", age: 57 });
+
+                expect(test1).to.be.true;
+                expect(coolPerson).to.deep.equal({name: "lulu", age: 57});
+            });
+        });
+        context("if not invoked successfully", () => {
+            it("should return false", () => {
+                let coolPerson = new Person("mai", 32); 
+                let test1 = coolPerson.tryUpdate({});
+
+                expect(test1).to.be.false;
+            });
+        });
+    });
+
+    describe("greetAll static method", () => {
+        it("should return sayHello() for each person in array", () => {
+            let personArray = [abby, gail];
+
+            expect(Person.greetAll(personArray)).to.deep.equal(["Abby says hello!", "Gail says hello!"])
+        });
+        it("should throw TypeError if not an array", () => {
+            expect(() => Person.greetAll(7)).to.throw(TypeError)
+        })
+    })
+});
