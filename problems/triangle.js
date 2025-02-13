@@ -20,6 +20,18 @@ class Triangle {
     validate() {
         this.isValid = this.hasValidSideLengths();
     }
+
+    static getValidTriangles(arr) {
+        let triangles = [];
+
+        for(let triangle of arr) {
+            if (triangle.hasValidSideLengths()) {
+                triangles.push(triangle);
+            }
+        }
+
+        return triangles;
+    }
 }
 
 

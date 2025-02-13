@@ -54,7 +54,13 @@ describe("triangle", () => {
     });
 
     describe("getValidTriangle static method", () => {
-        
-    })
+        it("should return a list of valid triangles", () => {
+            let t3 = new Triangle(4, 4, 6);
+
+            let tArr = [t1, t2, t3];
+
+            expect(Triangle.getValidTriangles(tArr)).to.deep.equal([t1, t3]);
+        });
+    });
 
 })
