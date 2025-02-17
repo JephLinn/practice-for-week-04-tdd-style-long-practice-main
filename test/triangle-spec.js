@@ -1,8 +1,7 @@
 const chai = require("chai");
 const expect = chai.expect;
 
-const { Triangle, Scalene} = require("../problems/triangle");
-
+const { Triangle, Scalene, Isosceles} = require("../problems/triangle");
 
 
 describe("triangle", () => {
@@ -100,6 +99,69 @@ describe("Scalene", () => {
             expect(sc1.isScalene()).to.be.false;
             expect(sc2.isScalene()).to.be.false;
             expect(sc3.isScalene()).to.be.false;
-        })
-    })
-})
+        });
+    });
+
+    describe("validate method", () => {
+        it("should return 'true' if isScalene is true", () => {
+            s1.validate();
+            
+            expect(s1.isValidScalene).to.equal(true);
+        });
+        it("should return 'false' if isScalene is false", () => {
+            let s2 = new Scalene(4, 4, 4);
+
+            s2.validate();
+
+            expect(s2.isValidScalene).to.be.false;
+        });
+    });
+});
+
+describe("Isosceles", () => {
+    let i1;
+
+    beforeEach(() => {
+        i1 = new Isosceles(2, 2, 4);
+    });
+
+    describe("Isosceles child Class", () => {
+        it("should be a child of the Triangle class", () => {
+            expect(i1).to.be.instanceOf(Triangle);
+        });
+        it("should set the all properties when a new triangle is created", () =>{
+            expect(i1).to.have.property("side1");
+            expect(i1).to.have.property("side2");
+            expect(i1).to.have.property("side3");
+        });
+        it("should have IsValidTriangle propertry", () => {
+            expect(i1.isValidTriangle).to.be.true;
+        });
+    });
+
+    describe("isIsosceles method", () => {
+        it("should return 'true' if at least two sides are equal", () => {
+            expect(i1.isIsosceles()).to.be.true;
+        });
+        it("should return 'false' if all sides are different", () => {
+            let it1 = new Isosceles(3, 2, 4);
+
+            expect(it1.isIsosceles()).to.be.false;
+        });
+    });
+
+    describe("validate method", () => {
+        it("should return 'true' if isIsosceles is true", () => {
+            i1.validate();
+            
+            expect(i1.isValidIsosceles).to.equal(true);
+        });
+        it("should return 'false' if isIsosceles is false", () => {
+            let i2 = new Isosceles(2, 3, 4);
+
+            i2.validate();
+
+            expect(i2.isValidIsosceles).to.be.false;
+        });
+    });
+});
