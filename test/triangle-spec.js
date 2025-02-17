@@ -1,7 +1,9 @@
 const chai = require("chai");
 const expect = chai.expect;
 
-const Triangle = require("../problems/triangle");
+const { Triangle, Scalene} = require("../problems/triangle");
+
+
 
 describe("triangle", () => {
     let t1;
@@ -63,4 +65,41 @@ describe("triangle", () => {
         });
     });
 
+});
+
+describe("Scalene", () => {
+    let s1;
+
+    beforeEach(() => {
+        s1 = new Scalene(2, 4, 6);
+    });
+
+    describe("Scalene child Class", () => {
+        it("should be a child of the Triangle class", () => {
+            expect(s1).to.be.instanceOf(Triangle);
+        });
+        it("should set the all properties when a new triangle is created", () =>{
+            expect(s1).to.have.property("side1");
+            expect(s1).to.have.property("side2");
+            expect(s1).to.have.property("side3");
+        });
+        it("should have IsValidTriangle propertry", () => {
+            expect(s1.isValidTriangle).to.be.true;
+        });
+    });
+
+    describe("isScalene method", () => {
+        it("should return 'true' if all sides have different lengths", () => {
+            expect(s1.isScalene()).to.be.true;
+        });
+        it("should return false is any two sides are equal", () => {
+            let sc1 = new Scalene(3, 3, 4);
+            let sc2 = new Scalene(3, 4, 3);
+            let sc3 = new Scalene(4, 3, 3);
+
+            expect(sc1.isScalene()).to.be.false;
+            expect(sc2.isScalene()).to.be.false;
+            expect(sc3.isScalene()).to.be.false;
+        })
+    })
 })
